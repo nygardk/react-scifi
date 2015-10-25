@@ -23,6 +23,10 @@ const App = React.createClass({
   getInitialState() {
     return {
       showDemo: false,
+      bgEndColor: color(colors.highlight.verydark),
+      bgStartColor: color(colors.highlight.dark),
+      lightCircle: color(colors.highlight.light),
+      mediumCircle: color(colors.highlight.medium),
     };
   },
 
@@ -32,10 +36,25 @@ const App = React.createClass({
         showDemo: true,
       });
     }, 300);
+
+    setInterval(() => {
+      this.setState(prevState => {
+        return {
+          bgEndColor: prevState.bgEndColor.hue(0.0005, true),
+          bgStartColor: prevState.bgStartColor.hue(0.0005, true),
+          lightCircle: prevState.lightCircle.hue(0.0005, true),
+          mediumCircle: prevState.mediumCircle.hue(0.0005, true),
+        };
+      });
+    }, 25);
   },
 
   render() {
     const {
+      bgStartColor,
+      bgEndColor,
+      lightCircle,
+      mediumCircle,
       showDemo,
     } = this.state;
 
@@ -61,8 +80,8 @@ const App = React.createClass({
 
     return (
       <GradientBackground
-        startColor={color(colors.highlight.dark).lightness(0.12).hex()}
-        endColor={colors.highlight.verydark}>
+        startColor={bgStartColor.hex()}
+        endColor={bgEndColor.hex()}>
         <div style={appStyle}>
           <div style={contentStyle}>
             <Fade show={showDemo}>
@@ -70,14 +89,14 @@ const App = React.createClass({
                 <Rotator spinDuration={8000}
                   spinDirection="cw"
                   style={rotatorStyle}>
-                  {scifiCircle(colors.highlight.light)}
+                  {scifiCircle(lightCircle.hex())}
                 </Rotator>
 
                 <Rotator spinDuration={12000}
                   spinDirection="ccw"
                   style={rotatorStyle}>
                   <Scale scale={0.95}>
-                    {scifiCircle(colors.highlight.medium)}
+                    {scifiCircle(mediumCircle.hex())}
                   </Scale>
                 </Rotator>
               </Zoom>
