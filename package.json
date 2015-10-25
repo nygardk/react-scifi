@@ -36,9 +36,8 @@
   },
   "scripts": {
     "start": "npm install && npm run dev",
-    "dev": "webpack-dev-server --hot --inline --config webpack.config.js --content-base src/ --progress --colors",
-    "build-html": "rm dist/index.html && cp src/index.html dist/",
-    "build": "npm run build-html && webpack -p --config webpack.production.config.js"
+    "run-demos": "webpack-dev-server --hot --inline --config webpack.demos.config.js --content-base demos/ --progress --colors",
+    "build-demos": "NODE_ENV=production webpack -p --config webpack.demos.config.js"
   },
   "engines": {
     "node": ">=4.0.0"

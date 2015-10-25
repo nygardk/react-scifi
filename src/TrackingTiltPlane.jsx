@@ -3,8 +3,7 @@ import React from 'react';
 import TiltPlane from 'TiltPlane';
 import { Motion, spring } from 'react-motion';
 
-function calculateTilt(mousePos, size) {
-  const maxDeg = 50;
+function calculateTilt(maxDeg, mousePos, size) {
   const halfSize = size / 2;
   const mouseOffset = mousePos - halfSize;
 
@@ -14,6 +13,13 @@ function calculateTilt(mousePos, size) {
 const TrackingTiltPlane = React.createClass({
   propTypes: {
     children: React.PropTypes.node,
+    maxTiltDeg: React.PropTypes.number,
+  },
+
+  getDefaultProps() {
+    return {
+      maxTiltDeg: 60,
+    };
   },
 
   getInitialState() {
@@ -34,9 +40,11 @@ const TrackingTiltPlane = React.createClass({
   },
 
   onMouseMove(event) {
+    const maxTiltDeg = this.props.maxTiltDeg;
+
     this.setState({
-      tiltX: -calculateTilt(event.pageY, window.innerHeight),
-      tiltY: calculateTilt(event.pageX, window.innerWidth),
+      tiltX: -calculateTilt(maxTiltDeg, event.pageY, window.innerHeight),
+      tiltY: calculateTilt(maxTiltDeg, event.pageX, window.innerWidth),
     });
   },
 

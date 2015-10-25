@@ -6,6 +6,13 @@ const GradientBackground = React.createClass({
     endColor: React.PropTypes.string.isRequired,
     startColor: React.PropTypes.string.isRequired,
     style: React.PropTypes.object,
+    type: React.PropTypes.oneOf(['linear', 'radial']),
+  },
+
+  getDefaultProps() {
+    return {
+      type: 'radial',
+    };
   },
 
   render() {
@@ -14,7 +21,14 @@ const GradientBackground = React.createClass({
       endColor,
       startColor,
       style,
+      type,
     } = this.props;
+
+    if (type === 'linear') {
+      /* eslint-disable no-console */
+      console.warn('WARNING: linear gradient background not yet supported!');
+      /* eslint-enable no-console */
+    }
 
     const GradientBackgroundStyle = {
       position: 'absolute',

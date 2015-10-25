@@ -17,7 +17,7 @@ import {
 } from 'shapes';
 import { cssVendorPrefix } from 'utils';
 
-const App = React.createClass({
+const Demo = React.createClass({
   getInitialState() {
     return {
       initialMount: false,
@@ -180,4 +180,4 @@ const App = React.createClass({
   },
 });
 
-export default App;
+export default Demo;
