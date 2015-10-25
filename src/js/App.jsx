@@ -9,25 +9,10 @@ import TrackingTiltPlane from 'TrackingTiltPlane';
 import Translate from 'Translate';
 import Zoom from 'Zoom';
 import { colors } from 'styleVariables';
-
-function scifiCircle(fillColor) {
-  return (
-    <svg width="500px" height="500px" viewBox="0 0 100 100" x="0px" y="0px">
-      <path fill={fillColor} d="M98.785,48.516C98.8,49.01,98.823,49.502,98.823,50c0,26.921-21.902,48.823-48.823,48.823
-        C23.079,98.823,1.177,76.921,1.177,50C1.177,23.079,23.079,1.177,50,1.177c8.847,0,17.146,2.378,24.311,6.51l0.595-1.016
-        C67.565,2.437,59.064,0,50,0C22.43,0,0,22.43,0,50s22.43,50,50,50s50-22.43,50-50c0-0.519-0.022-1.032-0.039-1.547L98.785,48.516z"
-        />
-    </svg>
-  );
-}
-function scifi34Circle(fillColor) {
-  return (
-    <svg width="500px" height="500px" viewBox="0 0 100 100" x="0px" y="0px">
-      <path fill={fillColor} d="M91.391,50c0,22.859-18.531,41.391-41.391,41.391V100c27.614,0,50-22.386,50-50c0-7.871-1.824-15.314-5.064-21.938
-        l-7.737,3.777C89.881,37.323,91.391,43.484,91.391,50z"/>
-    </svg>
-  );
-}
+import {
+  circle34,
+  circle14striped,
+} from 'shapes';
 
 const App = React.createClass({
   getInitialState() {
@@ -51,6 +36,10 @@ const App = React.createClass({
         };
       });
     }, 25);
+
+    setTimeout(() => {
+      this.showDemo();
+    }, 300);
   },
 
   showDemo() {
@@ -108,26 +97,25 @@ const App = React.createClass({
                     <Rotator spinDuration={8000}
                       spinDirection="cw"
                       style={circlePosition}>
-                      {scifiCircle(lightCircle.hex())}
+                      {circle34(lightCircle.hex())}
                     </Rotator>
 
                     <Translate z={-100} style={circlePosition}>
                       <Rotator spinDuration={12000}
                         spinDirection="ccw">
                         <Scale scale={1.1}>
-                          {scifiCircle(mediumCircle.hex())}
+                          {circle34(mediumCircle.hex())}
                         </Scale>
                       </Rotator>
                     </Translate>
 
-                    <Translate z={0} style={circlePosition}>
-                      <Rotator spinDuration={6000}
-                        spinDirection="ccw">
-                        <Scale scale={0.9}>
-                          {scifi34Circle(mediumCircle.hex())}
-                        </Scale>
-                      </Rotator>
-                    </Translate>
+                    <Rotator spinDuration={6000}
+                      spinDirection="ccw"
+                      style={circlePosition}>
+                      <Scale scale={0.9}>
+                        {circle14striped(mediumCircle.hex())}
+                      </Scale>
+                    </Rotator>
                   </TrackingTiltPlane>
                 </Zoom>
               </Fade>
