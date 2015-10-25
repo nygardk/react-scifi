@@ -1,18 +1,20 @@
 {
   "name": "react-scifi",
   "version": "0.0.1",
-  "description": "Sci-fi UI experiment with React.js",
+  "description": "Sci-fi UI-kit experiment with React.js",
+  "main": "./build/react-scifi.js",
   "author": {
     "name": "Klaus Nygård",
     "email": "klaus.nygard@gmail.com",
     "url": "http://klausnygard.fi"
   },
+  "license": "MIT",
   "dependencies": {
     "babel-core": "^5.8.25",
     "classnames": "^2.2.0",
     "lodash.times": "^3.0.3",
     "onecolor": "^2.5.0",
-    "react": "^0.14.0",
+    "react": "^0.14.0 || ^0.13.0",
     "react-dom": "^0.14.0",
     "react-motion": "^0.3.1"
   },
@@ -33,6 +35,18 @@
     "stylus-loader": "^1.2.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "react-component",
+    "scifi",
+    "ui",
+    "ui-kit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nygardk/react-scifi"
   },
   "scripts": {
     "start": "npm install && npm run dev",
