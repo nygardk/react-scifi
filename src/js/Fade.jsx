@@ -1,6 +1,7 @@
 import React from 'react';
 import { Motion, spring } from 'react-motion';
 
+import View from 'View';
 import Translucent from 'Translucent';
 
 const Fade = React.createClass({
@@ -17,14 +18,8 @@ const Fade = React.createClass({
       style,
     } = this.props;
 
-    const zoomStyle = {
-      position: 'relative',
-      width: '100%',
-      height: '100%',
-    };
-
     return (
-      <div className="Fade" style={{...zoomStyle, ...style}}>
+      <View className="Fade" style={style}>
         <Motion defaultStyle={{opacity: 0}}
           style={{opacity: spring(show ? 1 : 0)}}>
           {value => (
@@ -33,7 +28,7 @@ const Fade = React.createClass({
             </Translucent>
           )}
         </Motion>
-      </div>
+      </View>
     );
   },
 });

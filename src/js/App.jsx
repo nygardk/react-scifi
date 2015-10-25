@@ -4,9 +4,11 @@ import color from 'onecolor';
 import Fade from 'Fade';
 import GradientBackground from 'GradientBackground';
 import Rotator from 'Rotator';
+import Parallax from 'Parallax';
 import Scale from 'Scale';
 import TrackingTiltPlane from 'TrackingTiltPlane';
 import Translate from 'Translate';
+import View from 'View';
 import Zoom from 'Zoom';
 import { colors } from 'styleVariables';
 import {
@@ -91,15 +93,14 @@ const App = React.createClass({
 
     const reactIsCool = {
       color: lightCircle.hex(),
+      width: '100%',
+      height: '100%',
       position: 'absolute',
-      width: '300px',
-      left: '50%',
-      top: '50%',
-      marginTop: '-5px',
-      marginLeft: '-150px',
+      top: 0,
+      left: 0,
       textAlign: 'center',
       fontFamily: 'Monaco, fixed-width',
-      fontSize: '30px',
+      fontSize: '40px',
       fontWeight: 'bold',
       cursor: 'pointer',
       ...cssVendorPrefix('userSelect', 'none'),
@@ -114,7 +115,9 @@ const App = React.createClass({
           onMouseUp={() => { this.showDemo(); }}>
           <div style={contentStyle}>
             <Fade show={showDemo} style={flexContainer}>
-              <Zoom show={showDemo}>
+              <Zoom show={showDemo}
+                stifness={showDemo ? 160 : 170}
+                damping={showDemo ? 13 : 26}>
                 <TrackingTiltPlane>
                   <Rotator spinDuration={8000}
                     spinDirection="cw"
@@ -148,7 +151,18 @@ const App = React.createClass({
                   stifness={!showDemo ? 150 : 170}
                   damping={!showDemo ? 11 : 26}>
                   <Fade show={!showDemo && initialMount}>
-                    React.js is cool
+                    <Parallax count={5} distance={-200}>
+                      {index => (
+                        <View style={{
+                          opacity: 1 - index / 5,
+                          ...flexContainer,
+                          transformStyle: 'preserve-3d',
+                        }}
+                          key={index}>
+                          React.js is cool
+                        </View>
+                      )}
+                    </Parallax>
                   </Fade>
                 </Zoom>
               </TrackingTiltPlane>

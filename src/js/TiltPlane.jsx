@@ -1,5 +1,6 @@
 import React from 'react';
 
+import View from 'View';
 import { cssVendorPrefix } from 'utils';
 
 const TiltPlane = React.createClass({
@@ -13,7 +14,7 @@ const TiltPlane = React.createClass({
 
   getDefaultProps() {
     return {
-      perspective: 100,
+      perspective: 500,
       tiltX: 0,
       tiltY: 0,
     };
@@ -38,9 +39,9 @@ const TiltPlane = React.createClass({
     };
 
     return (
-      <div className="TiltPlane" style={{...tiltPlaneStyle, ...style}}>
+      <View className="TiltPlane" style={{...tiltPlaneStyle, ...style}}>
         {children}
-      </div>
+      </View>
     );
   },
 });

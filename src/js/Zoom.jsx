@@ -1,6 +1,7 @@
 import React from 'react';
 import { Motion, spring } from 'react-motion';
 
+import View from 'View';
 import Scale from 'Scale';
 
 const Zoom = React.createClass({
@@ -28,14 +29,8 @@ const Zoom = React.createClass({
       style,
     } = this.props;
 
-    const zoomStyle = {
-      position: 'relative',
-      width: '100%',
-      height: '100%',
-    };
-
     return (
-      <div className="Zoom" style={{...zoomStyle, ...style}}>
+      <View className="Zoom" style={style}>
         <Motion defaultStyle={{zoom: 0}}
           style={{zoom: spring(show ? 1 : 0, [stifness, damping])}}>
           {value => (
@@ -44,7 +39,7 @@ const Zoom = React.createClass({
             </Scale>
           )}
         </Motion>
-      </div>
+      </View>
     );
   },
 });

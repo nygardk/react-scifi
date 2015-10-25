@@ -1,5 +1,6 @@
 import React from 'react';
 
+import View from 'View';
 import { cssVendorPrefix } from 'utils';
 
 const Scale = React.createClass({
@@ -17,16 +18,14 @@ const Scale = React.createClass({
     } = this.props;
 
     const scaleStyle = {
-      width: '100%',
-      height: '100%',
       ...cssVendorPrefix('transform', `scale(${scale})`),
       ...cssVendorPrefix('transformOrigin', '50% 50%'),
     };
 
     return (
-      <div className="Scale" style={{...scaleStyle, ...style}}>
+      <View className="Scale" style={{...scaleStyle, ...style}}>
         {children}
-      </div>
+      </View>
     );
   },
 });

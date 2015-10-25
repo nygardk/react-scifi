@@ -57,7 +57,7 @@ const TrackingTiltPlane = React.createClass({
       <Motion defaultStyle={{tiltX: 0, tiltY: 0}}
         style={{tiltX: spring(tiltX), tiltY: spring(tiltY)}}>
         {value => (
-          <TiltPlane perspective={500} {...value}>
+          <TiltPlane {...this.props} {...value}>
             {this.props.children}
           </TiltPlane>
         )}

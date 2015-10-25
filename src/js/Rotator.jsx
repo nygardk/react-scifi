@@ -1,5 +1,6 @@
 import React from 'react';
 
+import View from 'View';
 import { cssVendorPrefix } from 'utils';
 import 'Rotator.styl';
 
@@ -35,9 +36,9 @@ const Rotator = React.createClass({
     };
 
     return (
-      <div className="Rotator" style={{...rotatorStyle, ...style}}>
+      <View className="Rotator" style={{...rotatorStyle, ...style}}>
         {children}
-      </div>
+      </View>
     );
   },
 });

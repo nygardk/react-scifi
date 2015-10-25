@@ -31,6 +31,7 @@ const Translate = React.createClass({
     const TranslateStyle = {
       height: '100%',
       width: '100%',
+      transformStyle: 'preserve-3d',
       ...cssVendorPrefix('transform', `translate3d(${x}px, ${y}px, ${z}px)`),
       ...cssVendorPrefix('transformOrigin', '50% 50%'),
     };

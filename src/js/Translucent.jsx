@@ -1,5 +1,6 @@
 import React from 'react';
 
+import View from 'View';
 
 const Translucent = React.createClass({
   propTypes: {
@@ -22,9 +23,9 @@ const Translucent = React.createClass({
     };
 
     return (
-      <div className="Translucent" style={{...translucentStyle, ...style}}>
+      <View className="Translucent" style={{...translucentStyle, ...style}}>
         {children}
-      </div>
+      </View>
     );
   },
 });
