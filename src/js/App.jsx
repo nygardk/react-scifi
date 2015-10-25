@@ -109,11 +109,11 @@ const App = React.createClass({
                       </Rotator>
                     </Translate>
 
-                    <Rotator spinDuration={6000}
+                    <Rotator spinDuration={5000}
                       spinDirection="ccw"
                       style={circlePosition}>
                       <Scale scale={0.9}>
-                        {circle14striped(mediumCircle.hex())}
+                        {circle14striped(lightCircle.hex())}
                       </Scale>
                     </Rotator>
                   </TrackingTiltPlane>
