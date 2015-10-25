@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "babel-core": "^5.8.25",
-    "classnames": "^2.1.2",
+    "classnames": "^2.2.0",
+    "lodash.times": "^3.0.3",
     "onecolor": "^2.5.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
@@ -35,7 +36,9 @@
   },
   "scripts": {
     "start": "npm install && npm run dev",
-    "dev": "webpack-dev-server --hot --inline --config webpack.dev.config.js --content-base src/ --progress --colors"
+    "dev": "webpack-dev-server --hot --inline --config webpack.config.js --content-base src/ --progress --colors",
+    "build-html": "rm dist/index.html && cp src/index.html dist/",
+    "build": "npm run build-html && webpack -p --config webpack.production.config.js"
   },
   "engines": {
     "node": ">=4.0.0"
