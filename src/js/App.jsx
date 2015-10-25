@@ -13,10 +13,12 @@ import {
   circle34,
   circle14striped,
 } from 'shapes';
+import { cssVendorPrefix } from 'utils';
 
 const App = React.createClass({
   getInitialState() {
     return {
+      initialMount: false,
       showDemo: false,
       bgEndColor: color(colors.highlight.verydark),
       bgStartColor: color(colors.highlight.dark),
@@ -44,6 +46,7 @@ const App = React.createClass({
 
   showDemo() {
     this.setState({
+      initialMount: true,
       showDemo: true,
     });
   },
@@ -58,12 +61,13 @@ const App = React.createClass({
     const {
       bgStartColor,
       bgEndColor,
+      initialMount,
       lightCircle,
       mediumCircle,
       showDemo,
     } = this.state;
 
-    const appStyle = {
+    const flexContainer = {
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
@@ -73,8 +77,10 @@ const App = React.createClass({
     };
 
     const contentStyle = {
+      ...flexContainer,
       width: '500px',
       height: '500px',
+      cursor: 'pointer',
     };
 
     const circlePosition = {
@@ -83,44 +89,72 @@ const App = React.createClass({
       left: 0,
     };
 
+    const reactIsCool = {
+      color: lightCircle.hex(),
+      position: 'absolute',
+      width: '300px',
+      left: '50%',
+      top: '50%',
+      marginTop: '-5px',
+      marginLeft: '-150px',
+      textAlign: 'center',
+      fontFamily: 'Monaco, fixed-width',
+      fontSize: '30px',
+      fontWeight: 'bold',
+      cursor: 'pointer',
+      ...cssVendorPrefix('userSelect', 'none'),
+    };
+
     return (
       <GradientBackground
         startColor={bgStartColor.hex()}
         endColor={bgEndColor.hex()}>
-          <div style={appStyle}
-            onMouseDown={() => { this.hideDemo(); }}
-            onMouseUp={() => { this.showDemo(); }}>
-            <div style={contentStyle}>
-              <Fade show={showDemo}>
-                <Zoom show={showDemo}>
-                  <TrackingTiltPlane tiltX={60} tiltY={30} perspective={500}>
-                    <Rotator spinDuration={8000}
-                      spinDirection="cw"
-                      style={circlePosition}>
-                      {circle34(lightCircle.hex())}
-                    </Rotator>
+        <div style={flexContainer}
+          onMouseDown={() => { this.hideDemo(); }}
+          onMouseUp={() => { this.showDemo(); }}>
+          <div style={contentStyle}>
+            <Fade show={showDemo} style={flexContainer}>
+              <Zoom show={showDemo}>
+                <TrackingTiltPlane>
+                  <Rotator spinDuration={8000}
+                    spinDirection="cw"
+                    style={circlePosition}>
+                    {circle34(lightCircle.hex())}
+                  </Rotator>
 
-                    <Translate z={-100} style={circlePosition}>
-                      <Rotator spinDuration={12000}
-                        spinDirection="ccw">
-                        <Scale scale={1.1}>
-                          {circle34(mediumCircle.hex())}
-                        </Scale>
-                      </Rotator>
-                    </Translate>
-
-                    <Rotator spinDuration={5000}
-                      spinDirection="ccw"
-                      style={circlePosition}>
-                      <Scale scale={0.9}>
-                        {circle14striped(lightCircle.hex())}
+                  <Translate z={-100} style={circlePosition}>
+                    <Rotator spinDuration={12000}
+                      spinDirection="ccw">
+                      <Scale scale={1.1}>
+                        {circle34(mediumCircle.hex())}
                       </Scale>
                     </Rotator>
-                  </TrackingTiltPlane>
+                  </Translate>
+
+                  <Rotator spinDuration={5000}
+                    spinDirection="ccw"
+                    style={circlePosition}>
+                    <Scale scale={0.9}>
+                      {circle14striped(lightCircle.hex())}
+                    </Scale>
+                  </Rotator>
+                </TrackingTiltPlane>
+              </Zoom>
+            </Fade>
+
+            <div style={reactIsCool}>
+              <TrackingTiltPlane>
+                <Zoom show={!showDemo && initialMount}
+                  stifness={!showDemo ? 150 : 170}
+                  damping={!showDemo ? 11 : 26}>
+                  <Fade show={!showDemo && initialMount}>
+                    React.js is cool
+                  </Fade>
                 </Zoom>
-              </Fade>
+              </TrackingTiltPlane>
             </div>
           </div>
+        </div>
       </GradientBackground>
     );
   },
