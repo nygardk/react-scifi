@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "npm install && npm run dev",
-    "run-demos": "webpack-dev-server --hot --inline --config webpack.demos.config.js --content-base demos/ --progress --colors",
+    "run-demos": "NODE_ENV=development webpack-dev-server --hot --inline --config webpack.demos.config.js --content-base demos/ --progress --colors",
     "build-demos": "NODE_ENV=production webpack -p --config webpack.demos.config.js"
   },
   "engines": {

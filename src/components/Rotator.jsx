@@ -2,7 +2,7 @@ import React from 'react';
 
 import View from 'View';
 import { cssVendorPrefix } from 'utils';
-import 'Rotator.styl';
+import './Rotator.styl';
 
 const Rotator = React.createClass({
   propTypes: {

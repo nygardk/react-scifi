@@ -16,7 +16,8 @@ module.exports = {
   },
   resolve: {
     root: [
-      path.resolve('./src')
+      path.resolve('./src'),
+      path.resolve('./src/components')
     ],
     extensions: ['', '.js', '.jsx']
   },

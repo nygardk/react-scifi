@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import 'View.styl';
+import './View.styl';
 import { cssVendorPrefix } from 'utils';
 
 const View = React.createClass({

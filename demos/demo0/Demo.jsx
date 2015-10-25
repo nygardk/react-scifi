@@ -1,22 +1,29 @@
 import React from 'react';
 import color from 'onecolor';
 
+import {
+  Fade,
+  GradientBackground,
+  Rotator,
+  Parallax,
+  Scale,
+  TrackingTiltPlane,
+  Translate,
+  View,
+  Zoom,
+  utils,
+} from 'react-scifi';
+
 import './Demo.styl';
-import Fade from 'Fade';
-import GradientBackground from 'GradientBackground';
-import Rotator from 'Rotator';
-import Parallax from 'Parallax';
-import Scale from 'Scale';
-import TrackingTiltPlane from 'TrackingTiltPlane';
-import Translate from 'Translate';
-import View from 'View';
-import Zoom from 'Zoom';
-import { colors } from 'styleVariables';
+import { colors } from './styleVariables';
 import {
   circle34,
   circle14striped,
-} from 'shapes';
-import { cssVendorPrefix } from 'utils';
+} from './shapes';
+
+const {
+  cssVendorPrefix,
+} = utils;
 
 const Demo = React.createClass({
   getInitialState() {
