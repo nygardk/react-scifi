@@ -1,6 +1,6 @@
 {
   "name": "react-scifi",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha",
   "description": "Sci-fi UI-kit experiment with React.js",
   "main": "./build/react-scifi.js",
   "author": {
