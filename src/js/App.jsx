@@ -5,6 +5,8 @@ import Fade from 'Fade';
 import GradientBackground from 'GradientBackground';
 import Rotator from 'Rotator';
 import Scale from 'Scale';
+import TrackingTiltPlane from 'TrackingTiltPlane';
+import Translate from 'Translate';
 import Zoom from 'Zoom';
 import { colors } from 'styleVariables';
 
@@ -31,12 +33,6 @@ const App = React.createClass({
   },
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        showDemo: true,
-      });
-    }, 300);
-
     setInterval(() => {
       this.setState(prevState => {
         return {
@@ -47,6 +43,18 @@ const App = React.createClass({
         };
       });
     }, 25);
+  },
+
+  showDemo() {
+    this.setState({
+      showDemo: true,
+    });
+  },
+
+  hideDemo() {
+    this.setState({
+      showDemo: false,
+    });
   },
 
   render() {
@@ -82,27 +90,33 @@ const App = React.createClass({
       <GradientBackground
         startColor={bgStartColor.hex()}
         endColor={bgEndColor.hex()}>
-        <div style={appStyle}>
-          <div style={contentStyle}>
-            <Fade show={showDemo}>
-              <Zoom show={showDemo}>
-                <Rotator spinDuration={8000}
-                  spinDirection="cw"
-                  style={rotatorStyle}>
-                  {scifiCircle(lightCircle.hex())}
-                </Rotator>
+          <div style={appStyle}
+            onMouseDown={() => { this.hideDemo(); }}
+            onMouseUp={() => { this.showDemo(); }}>
+            <div style={contentStyle}>
+              <Fade show={showDemo}>
+                <Zoom show={showDemo}>
+                  <TrackingTiltPlane tiltX={60} tiltY={30} perspective={500}>
+                    <Rotator spinDuration={8000}
+                      spinDirection="cw"
+                      style={rotatorStyle}>
+                      {scifiCircle(lightCircle.hex())}
+                    </Rotator>
 
-                <Rotator spinDuration={12000}
-                  spinDirection="ccw"
-                  style={rotatorStyle}>
-                  <Scale scale={0.95}>
-                    {scifiCircle(mediumCircle.hex())}
-                  </Scale>
-                </Rotator>
-              </Zoom>
-            </Fade>
+                    <Translate z={-100}>
+                      <Rotator spinDuration={12000}
+                        spinDirection="ccw"
+                        style={rotatorStyle}>
+                        <Scale scale={1}>
+                          {scifiCircle(mediumCircle.hex())}
+                        </Scale>
+                      </Rotator>
+                    </Translate>
+                  </TrackingTiltPlane>
+                </Zoom>
+              </Fade>
+            </div>
           </div>
-        </div>
       </GradientBackground>
     );
   },
