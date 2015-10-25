@@ -20,6 +20,14 @@ function scifiCircle(fillColor) {
     </svg>
   );
 }
+function scifi34Circle(fillColor) {
+  return (
+    <svg width="500px" height="500px" viewBox="0 0 100 100" x="0px" y="0px">
+      <path fill={fillColor} d="M91.391,50c0,22.859-18.531,41.391-41.391,41.391V100c27.614,0,50-22.386,50-50c0-7.871-1.824-15.314-5.064-21.938
+        l-7.737,3.777C89.881,37.323,91.391,43.484,91.391,50z"/>
+    </svg>
+  );
+}
 
 const App = React.createClass({
   getInitialState() {
@@ -80,7 +88,7 @@ const App = React.createClass({
       height: '500px',
     };
 
-    const rotatorStyle = {
+    const circlePosition = {
       position: 'absolute',
       top: 0,
       left: 0,
@@ -99,16 +107,24 @@ const App = React.createClass({
                   <TrackingTiltPlane tiltX={60} tiltY={30} perspective={500}>
                     <Rotator spinDuration={8000}
                       spinDirection="cw"
-                      style={rotatorStyle}>
+                      style={circlePosition}>
                       {scifiCircle(lightCircle.hex())}
                     </Rotator>
 
-                    <Translate z={-100}>
+                    <Translate z={-100} style={circlePosition}>
                       <Rotator spinDuration={12000}
-                        spinDirection="ccw"
-                        style={rotatorStyle}>
-                        <Scale scale={1}>
+                        spinDirection="ccw">
+                        <Scale scale={1.1}>
                           {scifiCircle(mediumCircle.hex())}
+                        </Scale>
+                      </Rotator>
+                    </Translate>
+
+                    <Translate z={0} style={circlePosition}>
+                      <Rotator spinDuration={6000}
+                        spinDirection="ccw">
+                        <Scale scale={0.9}>
+                          {scifi34Circle(mediumCircle.hex())}
                         </Scale>
                       </Rotator>
                     </Translate>
