@@ -39,9 +39,6 @@ module.exports = {
   },
   eslint: {
     failOnWarning: false,
-    failOnError: true
-  },
-  plugins: [
-    new webpack.NoErrorsPlugin()
-  ]
+    failOnError: false
+  }
 };
