@@ -3,7 +3,7 @@
 Sci-fi UI-kit with React.js
 ===========================
 
-See [demo](https://nygardk.github.com/react-scifi).
+See [demo](https://nygardk.github.io/react-scifi).
 
 NOTE: This is a purely experimental project. Not ready for production use.
 
