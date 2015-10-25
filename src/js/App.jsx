@@ -169,6 +169,12 @@ const App = React.createClass({
             </div>
           </div>
         </div>
+
+        <footer className="Footer">
+          <a href="https://github.com/nygardk/react-scifi" target="_blank">
+            GitHub: nygardk/react-scifi
+          </a>
+        </footer>
       </GradientBackground>
     );
   },
