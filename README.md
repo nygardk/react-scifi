@@ -1,9 +1,11 @@
-Sci-fi UI-kit experiment with React.js
-======================================
+<img src="react-scifi-logo.jpg" alt="React-Scifi" />
+
+Sci-fi UI-kit with React.js
+===========================
 
 See [demo](https://nygardk.github.com/react-scifi).
 
-This is purely experimental.
+NOTE: This is a purely experimental project. Not ready for production use.
 
 ## UI-kit
 
@@ -54,3 +56,8 @@ Todo
 ## License
 
 MIT
+
+## Font
+
+React-scifi font:
+http://www.fontspace.com/indian-type-foundry/rajdhani
