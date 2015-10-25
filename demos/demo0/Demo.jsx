@@ -88,7 +88,7 @@ const Demo = React.createClass({
       ...flexContainer,
       width: '500px',
       height: '500px',
-      cursor: 'pointer',
+      minWidth: 500,
     };
 
     const circlePosition = {
@@ -119,7 +119,9 @@ const Demo = React.createClass({
         endColor={bgEndColor.hex()}>
         <View style={flexContainer}
           onMouseDown={() => { this.hideDemo(); }}
-          onMouseUp={() => { this.showDemo(); }}>
+          onMouseUp={() => { this.showDemo(); }}
+          onTouchStart={() => { this.hideDemo(); }}
+          onTouchEnd={() => { this.showDemo(); }}>
           <View style={contentStyle}>
             <Fade show={showDemo} style={flexContainer}>
               <Zoom show={showDemo}
