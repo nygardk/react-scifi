@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cssBrowserPrefix } from 'utils';
+import { cssVendorPrefix } from 'utils';
 
 const Scale = React.createClass({
   propTypes: {
@@ -19,8 +19,8 @@ const Scale = React.createClass({
     const scaleStyle = {
       width: '100%',
       height: '100%',
-      ...cssBrowserPrefix('transform', `scale(${scale})`),
-      ...cssBrowserPrefix('transformOrigin', '50% 50%'),
+      ...cssVendorPrefix('transform', `scale(${scale})`),
+      ...cssVendorPrefix('transformOrigin', '50% 50%'),
     };
 
     return (

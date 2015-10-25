@@ -2,7 +2,7 @@ function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export function cssBrowserPrefix(name, value) {
+export function cssVendorPrefix(name, value) {
   const prefixes = ['Webkit', 'Moz', 'Ms', 'O'];
   const style = {};
   style[name] = value;

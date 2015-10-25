@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cssBrowserPrefix } from 'utils';
+import { cssVendorPrefix } from 'utils';
 
 const Translate = React.createClass({
   propTypes: {
@@ -31,8 +31,8 @@ const Translate = React.createClass({
     const TranslateStyle = {
       height: '100%',
       width: '100%',
-      ...cssBrowserPrefix('transform', `translate3d(${x}px, ${y}px, ${z}px)`),
-      ...cssBrowserPrefix('transformOrigin', '50% 50%'),
+      ...cssVendorPrefix('transform', `translate3d(${x}px, ${y}px, ${z}px)`),
+      ...cssVendorPrefix('transformOrigin', '50% 50%'),
     };
 
     return (

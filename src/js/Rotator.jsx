@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cssBrowserPrefix } from 'utils';
+import { cssVendorPrefix } from 'utils';
 import 'Rotator.styl';
 
 const Rotator = React.createClass({
@@ -30,8 +30,8 @@ const Rotator = React.createClass({
       : 'rotatorccw';
 
     const rotatorStyle = {
-      ...cssBrowserPrefix('animation', `${rotationKeyrames} ${spinDuration}ms linear infinite`),
-      ...cssBrowserPrefix('transformOrigin', '50% 50%'),
+      ...cssVendorPrefix('animation', `${rotationKeyrames} ${spinDuration}ms linear infinite`),
+      ...cssVendorPrefix('transformOrigin', '50% 50%'),
     };
 
     return (

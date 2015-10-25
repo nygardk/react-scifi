@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cssBrowserPrefix } from 'utils';
+import { cssVendorPrefix } from 'utils';
 
 const TiltPlane = React.createClass({
   propTypes: {
@@ -33,8 +33,8 @@ const TiltPlane = React.createClass({
       width: '100%',
       perspective: perspective,
       perspectiveOrigin: '50% 50%',
-      ...cssBrowserPrefix('transform', `rotateY(${tiltY}deg) rotateX(${tiltX}deg)`),
-      ...cssBrowserPrefix('transformStyle', 'preserve-3d'),
+      ...cssVendorPrefix('transform', `rotateY(${tiltY}deg) rotateX(${tiltX}deg)`),
+      ...cssVendorPrefix('transformStyle', 'preserve-3d'),
     };
 
     return (
