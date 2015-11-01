@@ -39,7 +39,9 @@ const TiltPlane = React.createClass({
     };
 
     return (
-      <View className="TiltPlane" style={{...tiltPlaneStyle, ...style}}>
+      <View {...this.props}
+        className="TiltPlane"
+        style={{...tiltPlaneStyle, ...style}}>
         {children}
       </View>
     );

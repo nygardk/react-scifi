@@ -6,6 +6,7 @@ import { cssVendorPrefix } from 'utils';
 
 const View = React.createClass({
   propTypes: {
+    flex: React.PropTypes.bool,
     children: React.PropTypes.node,
     className: React.PropTypes.string,
     style: React.PropTypes.object,
@@ -13,14 +14,22 @@ const View = React.createClass({
 
   render() {
     const {
+      flex,
       children,
       className,
       style,
     } = this.props;
 
+    const flexStyle = flex ? {
+      display: 'flex',
+      ...cssVendorPrefix('alignItems', 'center'),
+      ...cssVendorPrefix('justifyContent', 'center'),
+    } : {};
+
     const viewStyle = {
       height: '100%',
       width: '100%',
+      ...flexStyle,
       ...cssVendorPrefix('transformStyle', 'preserve-3d'),
       ...style,
     };

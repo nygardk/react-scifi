@@ -19,7 +19,7 @@ const Fade = React.createClass({
     } = this.props;
 
     return (
-      <View className="Fade" style={style}>
+      <View {...this.props} className="Fade" style={style}>
         <Motion defaultStyle={{opacity: 0}}
           style={{opacity: spring(show ? 1 : 0)}}>
           {value => (

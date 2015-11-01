@@ -23,7 +23,9 @@ const Scale = React.createClass({
     };
 
     return (
-      <View className="Scale" style={{...scaleStyle, ...style}}>
+      <View {...this.props}
+        className="Scale"
+        style={{...scaleStyle, ...style}}>
         {children}
       </View>
     );

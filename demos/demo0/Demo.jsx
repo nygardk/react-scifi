@@ -77,15 +77,8 @@ const Demo = React.createClass({
       showDemo,
     } = this.state;
 
-    const flexContainer = {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    };
-
     const contentStyle = {
-      ...flexContainer,
+      position: 'relative',
       width: '500px',
       height: '500px',
       minWidth: 500,
@@ -117,13 +110,13 @@ const Demo = React.createClass({
         type="radial"
         startColor={bgStartColor.hex()}
         endColor={bgEndColor.hex()}>
-        <View style={flexContainer}
+        <View flex={true}
           onMouseDown={() => { this.hideDemo(); }}
           onMouseUp={() => { this.showDemo(); }}
           onTouchStart={() => { this.hideDemo(); }}
           onTouchEnd={() => { this.showDemo(); }}>
-          <View style={contentStyle}>
-            <Fade show={showDemo} style={flexContainer}>
+          <View flex={true} style={contentStyle}>
+            <Fade show={showDemo} flex={true}>
               <Zoom show={showDemo}
                 stifness={showDemo ? 160 : 170}
                 damping={showDemo ? 13 : 26}>
@@ -162,11 +155,8 @@ const Demo = React.createClass({
                   <Fade show={!showDemo && initialMount}>
                     <Parallax count={5} distance={-200}>
                       {index => (
-                        <View style={{
-                          opacity: 1 - index / 5,
-                          ...flexContainer,
-                          transformStyle: 'preserve-3d',
-                        }}
+                        <View style={{opacity: 1 - index / 5}}
+                          flex={true}
                           key={index}>
                           React.js is cool
                         </View>

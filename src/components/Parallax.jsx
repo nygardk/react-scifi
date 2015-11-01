@@ -7,7 +7,10 @@ import Translate from 'Translate';
 
 const Parallax = React.createClass({
   propTypes: {
-    children: React.PropTypes.func,
+    children: React.PropTypes.oneOfType([
+      React.PropTypes.func,
+      React.PropTypes.node,
+    ]),
     count: React.PropTypes.number,
     distance: React.PropTypes.number,
     style: React.PropTypes.object,
@@ -29,7 +32,7 @@ const Parallax = React.createClass({
     } = this.props;
 
     return (
-      <View className="Parallax" style={style}>
+      <View {...this.props} className="Parallax" style={style}>
         <TiltPlane style={{position: 'relative'}}>
           {times(count, index => (
             <Translate z={index * distance}
@@ -39,7 +42,9 @@ const Parallax = React.createClass({
                 top: 0,
                 left: 0,
               }}>
-              {children(index)}
+              {typeof children === 'function'
+                ? children(index)
+                : children}
             </Translate>
           ))}
         </TiltPlane>
