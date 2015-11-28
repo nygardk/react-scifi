@@ -8,6 +8,10 @@
     "modules": true,
     "jsx": true
   },
+  "rules": {
+    "no-unused-vars": 1,
+    "comma-dangle": 1
+  },
   "plugins": [
     "react"
   ]
