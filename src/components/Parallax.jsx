@@ -1,4 +1,5 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import times from 'lodash.times';
 
 import View from 'View';
@@ -15,6 +16,8 @@ const Parallax = React.createClass({
     distance: React.PropTypes.number,
     style: React.PropTypes.object,
   },
+
+  mixins: [PureRenderMixin],
 
   getDefaultProps() {
     return {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Motion, spring } from 'react-motion';
 
 import View from 'View';
@@ -10,6 +11,8 @@ const Fade = React.createClass({
     show: React.PropTypes.bool.isRequired,
     style: React.PropTypes.object,
   },
+
+  mixins: [PureRenderMixin],
 
   render() {
     const {
@@ -23,7 +26,7 @@ const Fade = React.createClass({
         <Motion defaultStyle={{opacity: 0}}
           style={{opacity: spring(show ? 1 : 0)}}>
           {value => (
-            <Translucent opacity={value.opacity}>
+            <Translucent opacity={value.opacity.toFixed(2)}>
               {children}
             </Translucent>
           )}

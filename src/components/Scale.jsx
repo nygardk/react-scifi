@@ -1,4 +1,5 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import View from 'View';
 import { cssVendorPrefix } from 'utils';
@@ -9,6 +10,8 @@ const Scale = React.createClass({
     scale: React.PropTypes.number,
     style: React.PropTypes.object,
   },
+
+  mixins: [PureRenderMixin],
 
   render() {
     const {

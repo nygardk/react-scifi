@@ -1,4 +1,5 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import { cssVendorPrefix } from 'utils';
 
@@ -10,6 +11,8 @@ const Translate = React.createClass({
     z: React.PropTypes.number,
     style: React.PropTypes.object,
   },
+
+  mixins: [PureRenderMixin],
 
   getDefaultProps() {
     return {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Motion, spring } from 'react-motion';
 
 import View from 'View';
@@ -12,6 +13,8 @@ const Zoom = React.createClass({
     stifness: React.PropTypes.number,
     style: React.PropTypes.object,
   },
+
+  mixins: [PureRenderMixin],
 
   getDefaultProps() {
     return {
@@ -34,7 +37,7 @@ const Zoom = React.createClass({
         <Motion defaultStyle={{zoom: 0}}
           style={{zoom: spring(show ? 1 : 0, [stifness, damping])}}>
           {value => (
-            <Scale scale={value.zoom}>
+            <Scale scale={value.zoom.toFixed(2)}>
               {children}
             </Scale>
           )}

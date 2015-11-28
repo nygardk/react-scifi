@@ -1,4 +1,5 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import View from 'View';
 import { cssVendorPrefix } from 'utils';
@@ -11,6 +12,8 @@ const Rotator = React.createClass({
     spinDirection: React.PropTypes.oneOf(['cw', 'ccw']),
     style: React.PropTypes.object,
   },
+
+  mixins: [PureRenderMixin],
 
   getDefaultProps() {
     return {

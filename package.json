@@ -14,7 +14,8 @@
     "classnames": "^2.2.0",
     "lodash.times": "^3.0.3",
     "onecolor": "^2.5.0",
-    "react": "^0.14.0 || ^0.13.0",
+    "react": "^0.14.0",
+    "react-addons-pure-render-mixin": "^0.14.3",
     "react-dom": "^0.14.0",
     "react-motion": "^0.3.1"
   },
