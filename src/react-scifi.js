@@ -1,6 +1,8 @@
 import Fade from './components/Fade';
 import GradientBackground from './components/GradientBackground';
+import Grid from './components/Grid';
 import Parallax from './components/Parallax';
+import Randomizer from './components/Randomizer';
 import Rotator from './components/Rotator';
 import Scale from './components/Scale';
 import TiltPlane from './components/TiltPlane';
@@ -14,7 +16,9 @@ import * as utils from './utils';
 export {
   Fade,
   GradientBackground,
+  Grid,
   Parallax,
+  Randomizer,
   Rotator,
   Scale,
   TiltPlane,

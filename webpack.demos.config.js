@@ -6,7 +6,8 @@ var ENV = process.env.NODE_ENV;
 module.exports = {
   devtool: ENV === 'development' ? 'inline-source-map' : false,
   entry: {
-    demo0: ['babel-core/polyfill', './demos/demo0/index.jsx']
+    demo0: ['babel-core/polyfill', './demos/demo0/index.jsx'],
+    demo1: ['babel-core/polyfill', './demos/demo1/index.jsx']
   },
   contentBase: './demos',
   output: {
@@ -38,7 +39,6 @@ module.exports = {
           : ['babel?comments=false'],
         exclude: /node_modules/
       },
-      { test: /\.css$/, loader: 'style!css' },
       { test: /\.styl$/, loader: 'style!css!stylus'},
       { test: /\.(eot|otf|woff2?|ttf|svg|png)[\?]?.*$/, loader: 'file-loader' }
     ]

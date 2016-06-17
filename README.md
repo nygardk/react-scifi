@@ -21,6 +21,10 @@ Todo
 
 Todo
 
+### Randomizer
+
+Todo
+
 ### Rotator
 
 Todo

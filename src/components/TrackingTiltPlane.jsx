@@ -1,8 +1,8 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import { Motion, spring } from 'react-motion';
 
 import TiltPlane from 'TiltPlane';
-import { Motion, spring } from 'react-motion';
 
 function calculateTilt(maxDeg, mousePos, size) {
   const halfSize = size / 2;
