@@ -2,7 +2,7 @@ import Fade from './components/Fade';
 import GradientBackground from './components/GradientBackground';
 import Grid from './components/Grid';
 import Parallax from './components/Parallax';
-import Randomizer from './components/Randomizer';
+import MatrixModifier from './components/MatrixModifier';
 import Rotator from './components/Rotator';
 import Scale from './components/Scale';
 import TiltPlane from './components/TiltPlane';
@@ -18,7 +18,7 @@ export {
   GradientBackground,
   Grid,
   Parallax,
-  Randomizer,
+  MatrixModifier,
   Rotator,
   Scale,
   TiltPlane,

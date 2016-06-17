@@ -4,7 +4,7 @@ import { Motion, spring } from 'react-motion';
 import { cssVendorPrefix } from 'utils';
 import View from 'View';
 
-const Randomizer = React.createClass({
+const MatrixModifier = React.createClass({
   propTypes: {
     children: React.PropTypes.func.isRequired,
     randomizerFn: React.PropTypes.func.isRequired,
@@ -18,9 +18,9 @@ const Randomizer = React.createClass({
     };
   },
 
-  onAction() {
+  onRandomize() {
     this.setState({
-      values: this.randomize(this.props.values),
+      values: this.props.randomizerFn(this.state.values),
     });
   },
 
@@ -28,16 +28,6 @@ const Randomizer = React.createClass({
     this.setState({
       values: this.props.values,
     });
-  },
-
-  randomize(values) {
-    const randomizedValues = {};
-
-    Object.keys(values).forEach(key => {
-      randomizedValues[key] = this.props.randomizerFn(values[key]);
-    });
-
-    return randomizedValues;
   },
 
   render() {
@@ -57,10 +47,10 @@ const Randomizer = React.createClass({
 
     return (
       <Motion defaultStyle={this.props.values} style={motionValues}>
-        {springValues => children(motionValues, this.onAction, this.onRelease)}
+        {springValues => children(motionValues, this.onRandomize, this.onRelease)}
       </Motion>
     );
   },
 });
 
-export default Randomizer;
+export default MatrixModifier;

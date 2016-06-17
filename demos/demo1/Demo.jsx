@@ -5,12 +5,29 @@ import React from 'react';
 import {
   Grid,
   GradientBackground,
-  Randomizer,
+  MatrixModifier,
   View,
 } from 'react-scifi';
 
 import './Demo.styl';
 import { colors } from './styleVariables';
+
+function modifyFn(valueMatrix, xIndex, yIndex) {
+  const newMatrix = valueMatrix.createCopy();
+
+  // const newValues = {};
+  // const keys = Object.keys(values);
+
+  // for (let i = 0; i < keys.length; i++) {
+  //   newValues[keys[i]] = values[keys[i]] - Math.random();
+  // }
+
+  // console.log(newValues);
+
+  // return newValues;
+
+  return newMatrix;
+}
 
 const Demo = React.createClass({
   render() {
@@ -19,11 +36,12 @@ const Demo = React.createClass({
         type="radial"
         startColor={colors.highlight.dark}
         endColor={colors.highlight.verydark}>
-        <Grid type="fill" itemSize={{x: 20, y: 20}}>
-          {() => (
-            <Randomizer values={{opacity: 1}}
-              randomizerFn={value => value - Math.random()}>
-              {(values, randomize, release) => (
+        <MatrixModifier
+          initialValue={{opacity: 0.0}}
+          modifyFn={modifyFn}>
+          {(valueMatrix, randomize, release) => (
+            <Grid type="fill" itemSize={{x: 30, y: 30}}>
+              {position => (
                 <View flex={true}
                   onMouseOver={randomize}
                   onMouseOut={release}>
@@ -34,14 +52,15 @@ const Demo = React.createClass({
                       r="50"
                       style={{
                         fill: `white`,
-                        opacity: values.opacity.val.toFixed(2),
+                        opacity: valueMatrix.get(position.x, position.y)
+                          .opacity.val.toFixed(2),
                       }} />
                   </svg>
                 </View>
               )}
-            </Randomizer>
+            </Grid>
           )}
-        </Grid>
+        </MatrixModifier>
 
         <footer className="Footer">
           <a href="https://github.com/nygardk/react-scifi" target="_blank">
