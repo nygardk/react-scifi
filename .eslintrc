@@ -2,6 +2,7 @@
   "extends": "eslint-config-airbnb",
   "env": {
     "es6": true,
+    "jasmine": true
   },
   "parser": "babel-eslint",
   "ecmaFeatures": {
