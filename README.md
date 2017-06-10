@@ -1,11 +1,14 @@
 <img src="react-scifi-logo.jpg" alt="React-Scifi" />
 
-Sci-fi UI-kit with React.js
-===========================
+# Sci-fi UI-kit with React.js
 
 See [demo](https://nygardk.github.io/react-scifi).
 
 NOTE: This is a purely experimental project. Not ready for production use.
+
+## Install
+
+* run `yarn`
 
 ## UI-kit
 

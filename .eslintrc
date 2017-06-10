@@ -1,19 +1,33 @@
 {
-  "extends": "eslint-config-airbnb",
+  "extends": "airbnb",
   "env": {
-    "es6": true,
+    "node": true,
+    "mocha": true,
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "expect": true,
+    "sinon": true
   },
   "parser": "babel-eslint",
-  "ecmaFeatures": {
-    "modules": true,
-    "jsx": true
-  },
   "rules": {
-    "no-unused-vars": 1,
-    "comma-dangle": 1
-  },
-  "plugins": [
-    "react"
-  ]
+    "strict": 0,
+    "default-case": 0,
+    "indent": ["warn", 2, { "VariableDeclarator": 2 }],
+    "max-len": [2, 120],
+    "new-cap": ["error", { "capIsNew": false }],
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-no-bind": [0, { "ignoreRefs": true }],
+    "react/forbid-prop-types": [2, { "forbid": ["any"] }],
+    "react/no-find-dom-node": 0,
+    "arrow-body-style": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "react/require-default-props": 0,
+    "arrow-parens": 0,
+    "import/no-named-as-default": 0
+  }
 }
-
