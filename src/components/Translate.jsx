@@ -40,7 +40,7 @@ const Translate = React.createClass({
     };
 
     return (
-      <div className="Translate" style={{...TranslateStyle, ...style}}>
+      <div className="Translate" style={{ ...TranslateStyle, ...style }}>
         {children}
       </div>
     );

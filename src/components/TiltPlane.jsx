@@ -35,16 +35,18 @@ const TiltPlane = React.createClass({
     const tiltPlaneStyle = {
       height: '100%',
       width: '100%',
-      perspective: perspective,
+      perspective,
       perspectiveOrigin: '50% 50%',
       ...cssVendorPrefix('transform', `rotateY(${tiltY}deg) rotateX(${tiltX}deg)`),
       ...cssVendorPrefix('transformStyle', 'preserve-3d'),
     };
 
     return (
-      <View {...this.props}
+      <View
+        {...this.props}
         className="TiltPlane"
-        style={{...tiltPlaneStyle, ...style}}>
+        style={{ ...tiltPlaneStyle, ...style }}
+      >
         {children}
       </View>
     );

@@ -43,11 +43,14 @@ const GradientBackground = React.createClass({
     };
 
     return (
-      <div className="GradientBackground" style={{
-        ...maxSize,
-        ...style,
-        ...GradientBackgroundStyle,
-      }}>
+      <div
+        className="GradientBackground"
+        style={{
+          ...maxSize,
+          ...style,
+          ...GradientBackgroundStyle,
+        }}
+      >
         <div style={maxSize}>
           {children}
         </div>

@@ -36,15 +36,17 @@ const Parallax = React.createClass({
 
     return (
       <View {...this.props} className="Parallax" style={style}>
-        <TiltPlane style={{position: 'relative'}}>
+        <TiltPlane style={{ position: 'relative' }}>
           {times(count, index => (
-            <Translate z={index * distance}
+            <Translate
+              z={index * distance}
               key={index}
               style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
-              }}>
+              }}
+            >
               {typeof children === 'function'
                 ? children(index)
                 : children}

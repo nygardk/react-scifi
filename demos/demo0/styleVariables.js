@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+
 export const colors = {
   highlight: {
     light: '#35EDE6',

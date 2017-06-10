@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import './View.styl';
 import { cssVendorPrefix } from 'utils';
+import './View.styl';
 
 const View = React.createClass({
   propTypes: {

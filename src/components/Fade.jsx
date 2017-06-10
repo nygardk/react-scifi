@@ -23,8 +23,10 @@ const Fade = React.createClass({
 
     return (
       <View {...this.props} className="Fade" style={style}>
-        <Motion defaultStyle={{opacity: 0}}
-          style={{opacity: spring(show ? 1 : 0)}}>
+        <Motion
+          defaultStyle={{ opacity: 0 }}
+          style={{ opacity: spring(show ? 1 : 0) }}
+        >
           {value => (
             <Translucent opacity={value.opacity.toFixed(2)}>
               {children}

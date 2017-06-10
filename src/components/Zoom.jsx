@@ -34,8 +34,10 @@ const Zoom = React.createClass({
 
     return (
       <View className="Zoom" style={style}>
-        <Motion defaultStyle={{zoom: 0}}
-          style={{zoom: spring(show ? 1 : 0, [stifness, damping])}}>
+        <Motion
+          defaultStyle={{ zoom: 0 }}
+          style={{ zoom: spring(show ? 1 : 0, [stifness, damping]) }}
+        >
           {value => (
             <Scale scale={value.zoom.toFixed(2)}>
               {children}

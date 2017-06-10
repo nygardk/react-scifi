@@ -39,9 +39,11 @@ const Rotator = React.createClass({
     };
 
     return (
-      <View {...this.props}
+      <View
+        {...this.props}
         className="Rotator"
-        style={{...rotatorStyle, ...style}}>
+        style={{ ...rotatorStyle, ...style }}
+      >
         {children}
       </View>
     );

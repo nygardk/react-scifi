@@ -19,11 +19,11 @@ const Translucent = React.createClass({
     const translucentStyle = {
       height: '100%',
       width: '100%',
-      opacity: opacity,
+      opacity,
     };
 
     return (
-      <View className="Translucent" style={{...translucentStyle, ...style}}>
+      <View className="Translucent" style={{ ...translucentStyle, ...style }}>
         {children}
       </View>
     );

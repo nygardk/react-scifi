@@ -109,36 +109,47 @@ const Demo = React.createClass({
       <GradientBackground
         type="radial"
         startColor={bgStartColor.hex()}
-        endColor={bgEndColor.hex()}>
-        <View flex={true}
+        endColor={bgEndColor.hex()}
+      >
+        <View
+          flex
           onMouseDown={() => { this.hideDemo(); }}
           onMouseUp={() => { this.showDemo(); }}
           onTouchStart={() => { this.hideDemo(); }}
-          onTouchEnd={() => { this.showDemo(); }}>
-          <View flex={true} style={contentStyle}>
-            <Fade show={showDemo} flex={true}>
-              <Zoom show={showDemo}
+          onTouchEnd={() => { this.showDemo(); }}
+        >
+          <View flex style={contentStyle}>
+            <Fade show={showDemo} flex>
+              <Zoom
+                show={showDemo}
                 stifness={showDemo ? 160 : 170}
-                damping={showDemo ? 13 : 26}>
+                damping={showDemo ? 13 : 26}
+              >
                 <TrackingTiltPlane maxTiltDeg={60}>
-                  <Rotator spinDuration={8000}
+                  <Rotator
+                    spinDuration={8000}
                     spinDirection="cw"
-                    style={circlePosition}>
+                    style={circlePosition}
+                  >
                     {circle34(lightCircle.hex())}
                   </Rotator>
 
                   <Translate z={-100} style={circlePosition}>
-                    <Rotator spinDuration={12000}
-                      spinDirection="ccw">
+                    <Rotator
+                      spinDuration={12000}
+                      spinDirection="ccw"
+                    >
                       <Scale scale={1.1}>
                         {circle34(mediumCircle.hex())}
                       </Scale>
                     </Rotator>
                   </Translate>
 
-                  <Rotator spinDuration={5000}
+                  <Rotator
+                    spinDuration={5000}
                     spinDirection="ccw"
-                    style={circlePosition}>
+                    style={circlePosition}
+                  >
                     <Scale scale={0.9}>
                       {circle14striped(lightCircle.hex())}
                     </Scale>
@@ -149,15 +160,19 @@ const Demo = React.createClass({
 
             <div style={reactIsCool}>
               <TrackingTiltPlane maxTiltDeg={60}>
-                <Zoom show={!showDemo && initialMount}
+                <Zoom
+                  show={!showDemo && initialMount}
                   stifness={!showDemo ? 150 : 170}
-                  damping={!showDemo ? 11 : 26}>
+                  damping={!showDemo ? 11 : 26}
+                >
                   <Fade show={!showDemo && initialMount}>
                     <Parallax count={5} distance={-200}>
                       {index => (
-                        <View style={{opacity: 1 - index / 5}}
-                          flex={true}
-                          key={index}>
+                        <View
+                          style={{ opacity: 1 - (index / 5) }}
+                          flex
+                          key={index}
+                        >
                           React.js is cool
                         </View>
                       )}
@@ -170,7 +185,11 @@ const Demo = React.createClass({
         </View>
 
         <footer className="Footer">
-          <a href="https://github.com/nygardk/react-scifi" target="_blank">
+          <a
+            href="https://github.com/nygardk/react-scifi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             GitHub: nygardk/react-scifi
           </a>
         </footer>

@@ -8,7 +8,7 @@ function calculateTilt(maxDeg, mousePos, size) {
   const halfSize = size / 2;
   const mouseOffset = mousePos - halfSize;
 
-  return mouseOffset / halfSize * maxDeg;
+  return (mouseOffset / halfSize) * maxDeg;
 }
 
 const TrackingTiltPlane = React.createClass({
@@ -76,8 +76,10 @@ const TrackingTiltPlane = React.createClass({
     const tiltY = invertY ? -this.state.tiltY : this.state.tiltY;
 
     return (
-      <Motion defaultStyle={{tiltX: 0, tiltY: 0}}
-        style={{tiltX: spring(tiltX), tiltY: spring(tiltY)}}>
+      <Motion
+        defaultStyle={{ tiltX: 0, tiltY: 0 }}
+        style={{ tiltX: spring(tiltX), tiltY: spring(tiltY) }}
+      >
         {value => (
           <TiltPlane {...this.props} {...value}>
             {children}
