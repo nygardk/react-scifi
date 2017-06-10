@@ -1,35 +1,35 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-import View from 'View';
 import { cssVendorPrefix } from 'utils';
+import View from './View';
 
-const TiltPlane = React.createClass({
-  propTypes: {
-    children: React.PropTypes.node,
-    perspective: React.PropTypes.number,
-    style: React.PropTypes.object,
-    tiltX: React.PropTypes.number, /* deg */
-    tiltY: React.PropTypes.number, /* deg */
-  },
+class TiltPlane extends PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    perspective: PropTypes.number,
+    style: PropTypes.object,
+    tiltX: PropTypes.number, /* deg */
+    tiltY: PropTypes.number, /* deg */
+  }
 
-  mixins: [PureRenderMixin],
-
-  getDefaultProps() {
-    return {
-      perspective: 500,
-      tiltX: 0,
-      tiltY: 0,
-    };
-  },
+  static defaultProps = {
+    perspective: 500,
+    tiltX: 0,
+    tiltY: 0,
+  }
 
   render() {
     const {
       children,
+      className,
       perspective,
       style,
       tiltX,
       tiltY,
+      ...rest
     } = this.props;
 
     const tiltPlaneStyle = {
@@ -43,14 +43,14 @@ const TiltPlane = React.createClass({
 
     return (
       <View
-        {...this.props}
-        className="TiltPlane"
+        className={cx('TiltPlane', className)}
         style={{ ...tiltPlaneStyle, ...style }}
+        {...rest}
       >
         {children}
       </View>
     );
-  },
-});
+  }
+}
 
 export default TiltPlane;

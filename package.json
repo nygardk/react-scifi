@@ -11,9 +11,10 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.23.0",
-    "classnames": "2.2.5",
+    "classnames": "^2.2.5",
     "lodash.times": "4.3.2",
     "onecolor": "3.0.4",
+    "prop-types": "^15.5.10",
     "react": "15.5.4",
     "react-addons-pure-render-mixin": "15.5.2",
     "react-dom": "15.5.4",

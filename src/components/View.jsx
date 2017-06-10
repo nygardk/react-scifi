@@ -1,16 +1,17 @@
-import React from 'react';
-import classnames from 'classnames';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import { cssVendorPrefix } from 'utils';
 import './View.styl';
 
-const View = React.createClass({
-  propTypes: {
-    flex: React.PropTypes.bool,
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    style: React.PropTypes.object,
-  },
+class View extends PureComponent {
+  static propTypes = {
+    flex: PropTypes.bool,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    style: PropTypes.object,
+  }
 
   render() {
     const {
@@ -18,6 +19,7 @@ const View = React.createClass({
       children,
       className,
       style,
+      ...rest
     } = this.props;
 
     const flexStyle = flex ? {
@@ -34,14 +36,12 @@ const View = React.createClass({
       ...style,
     };
 
-    const classes = classnames('View', className);
-
     return (
-      <div {...this.props} className={classes} style={viewStyle}>
+      <div className={cx('View', className)} style={viewStyle} {...rest}>
         {children}
       </div>
     );
-  },
-});
+  }
+}
 
 export default View;

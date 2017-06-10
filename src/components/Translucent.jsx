@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-import View from 'View';
+import View from './View';
 
-const Translucent = React.createClass({
-  propTypes: {
-    children: React.PropTypes.node,
-    opacity: React.PropTypes.number,
-    style: React.PropTypes.object,
-  },
+class Translucent extends PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    opacity: PropTypes.number,
+    style: PropTypes.object,
+  }
 
   render() {
     const {
       children,
+      className,
       opacity,
       style,
+      ...rest
     } = this.props;
 
     const translucentStyle = {
@@ -23,11 +28,15 @@ const Translucent = React.createClass({
     };
 
     return (
-      <View className="Translucent" style={{ ...translucentStyle, ...style }}>
+      <View
+        className={cx('Translucent', className)}
+        style={{ ...translucentStyle, ...style }}
+        {...rest}
+      >
         {children}
       </View>
     );
-  },
-});
+  }
+}
 
 export default Translucent;

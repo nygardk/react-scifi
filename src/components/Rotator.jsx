@@ -1,32 +1,32 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-import View from 'View';
 import { cssVendorPrefix } from 'utils';
+import View from './View';
 import './Rotator.styl';
 
-const Rotator = React.createClass({
-  propTypes: {
-    children: React.PropTypes.node,
-    spinDuration: React.PropTypes.number, // ms
-    spinDirection: React.PropTypes.oneOf(['cw', 'ccw']),
-    style: React.PropTypes.object,
-  },
+class Rotator extends PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    spinDuration: PropTypes.number, // ms
+    spinDirection: PropTypes.oneOf(['cw', 'ccw']),
+    style: PropTypes.object,
+  }
 
-  mixins: [PureRenderMixin],
-
-  getDefaultProps() {
-    return {
-      spinDirection: 'cw',
-    };
-  },
+  static defaultProps = {
+    spinDirection: 'cw',
+  }
 
   render() {
     const {
       children,
+      className,
       spinDirection,
       spinDuration,
       style,
+      ...rest
     } = this.props;
 
     const rotationKeyrames = spinDirection === 'cw'
@@ -40,14 +40,14 @@ const Rotator = React.createClass({
 
     return (
       <View
-        {...this.props}
-        className="Rotator"
+        className={cx('Rotator', className)}
         style={{ ...rotatorStyle, ...style }}
+        {...rest}
       >
         {children}
       </View>
     );
-  },
-});
+  }
+}
 
 export default Rotator;

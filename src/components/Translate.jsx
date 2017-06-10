@@ -1,30 +1,29 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import { cssVendorPrefix } from 'utils';
 
-const Translate = React.createClass({
-  propTypes: {
-    children: React.PropTypes.node,
-    x: React.PropTypes.number,
-    y: React.PropTypes.number,
-    z: React.PropTypes.number,
-    style: React.PropTypes.object,
-  },
+class Translate extends PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+    z: PropTypes.number.isRequired,
+    style: PropTypes.object,
+  }
 
-  mixins: [PureRenderMixin],
-
-  getDefaultProps() {
-    return {
-      x: 0,
-      y: 0,
-      z: 0,
-    };
-  },
+  static defaultProps = {
+    x: 0,
+    y: 0,
+    z: 0,
+  }
 
   render() {
     const {
       children,
+      className,
       style,
       x,
       y,
@@ -40,11 +39,11 @@ const Translate = React.createClass({
     };
 
     return (
-      <div className="Translate" style={{ ...TranslateStyle, ...style }}>
+      <div className={cx('Translate', className)} style={{ ...TranslateStyle, ...style }}>
         {children}
       </div>
     );
-  },
-});
+  }
+}
 
 export default Translate;

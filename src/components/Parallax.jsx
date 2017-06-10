@@ -1,41 +1,45 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 import times from 'lodash.times';
 
-import View from 'View';
-import TiltPlane from 'TiltPlane';
-import Translate from 'Translate';
+import View from './View';
+import TiltPlane from './TiltPlane';
+import Translate from './Translate';
 
-const Parallax = React.createClass({
-  propTypes: {
-    children: React.PropTypes.oneOfType([
-      React.PropTypes.func,
-      React.PropTypes.node,
+class Parallax extends PureComponent {
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.node,
     ]),
-    count: React.PropTypes.number,
-    distance: React.PropTypes.number,
-    style: React.PropTypes.object,
-  },
+    className: PropTypes.string,
+    count: PropTypes.number,
+    distance: PropTypes.number,
+    style: PropTypes.object,
+  }
 
-  mixins: [PureRenderMixin],
-
-  getDefaultProps() {
-    return {
-      count: 10,
-      distance: -15,
-    };
-  },
+  static defaultProps = {
+    count: 10,
+    distance: -15,
+  }
 
   render() {
     const {
       children,
+      className,
       count,
       distance,
       style,
+      ...rest
     } = this.props;
 
     return (
-      <View {...this.props} className="Parallax" style={style}>
+      <View
+        className={cx('Parallax', className)}
+        style={style}
+        {...rest}
+      >
         <TiltPlane style={{ position: 'relative' }}>
           {times(count, index => (
             <Translate
@@ -55,7 +59,7 @@ const Parallax = React.createClass({
         </TiltPlane>
       </View>
     );
-  },
-});
+  }
+}
 
 export default Parallax;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import color from 'onecolor';
 
 import {
@@ -25,17 +25,15 @@ const {
   cssVendorPrefix,
 } = utils;
 
-const Demo = React.createClass({
-  getInitialState() {
-    return {
-      initialMount: false,
-      showDemo: false,
-      bgEndColor: color(colors.highlight.verydark),
-      bgStartColor: color(colors.highlight.dark),
-      lightCircle: color(colors.highlight.light),
-      mediumCircle: color(colors.highlight.medium),
-    };
-  },
+class Demo extends PureComponent {
+  state = {
+    initialMount: false,
+    showDemo: false,
+    bgEndColor: color(colors.highlight.verydark),
+    bgStartColor: color(colors.highlight.dark),
+    lightCircle: color(colors.highlight.light),
+    mediumCircle: color(colors.highlight.medium),
+  }
 
   componentDidMount() {
     setInterval(() => {
@@ -52,20 +50,14 @@ const Demo = React.createClass({
     setTimeout(() => {
       this.showDemo();
     }, 300);
-  },
+  }
 
-  showDemo() {
-    this.setState({
-      initialMount: true,
-      showDemo: true,
-    });
-  },
+  showDemo = () => this.setState({
+    initialMount: true,
+    showDemo: true,
+  })
 
-  hideDemo() {
-    this.setState({
-      showDemo: false,
-    });
-  },
+  hideDemo = () => this.setState({ showDemo: false })
 
   render() {
     const {
@@ -195,7 +187,7 @@ const Demo = React.createClass({
         </footer>
       </GradientBackground>
     );
-  },
-});
+  }
+}
 
 export default Demo;

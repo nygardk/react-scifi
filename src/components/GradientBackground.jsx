@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-const GradientBackground = React.createClass({
-  propTypes: {
-    children: React.PropTypes.node,
-    endColor: React.PropTypes.string.isRequired,
-    startColor: React.PropTypes.string.isRequired,
-    style: React.PropTypes.object,
-    type: React.PropTypes.oneOf(['linear', 'radial']),
-  },
+class GradientBackground extends PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    endColor: PropTypes.string.isRequired,
+    startColor: PropTypes.string.isRequired,
+    style: PropTypes.object,
+    type: PropTypes.oneOf(['linear', 'radial']),
+  }
 
-  getDefaultProps() {
-    return {
-      type: 'radial',
-    };
-  },
+  static defaultProps = {
+    type: 'radial',
+  }
 
   render() {
     const {
       children,
+      className,
       endColor,
       startColor,
       style,
       type,
+      ...rest
     } = this.props;
 
     if (type === 'linear') {
@@ -44,19 +47,20 @@ const GradientBackground = React.createClass({
 
     return (
       <div
-        className="GradientBackground"
+        className={(cx('GradientBackground', className))}
         style={{
           ...maxSize,
           ...style,
           ...GradientBackgroundStyle,
         }}
+        {...rest}
       >
         <div style={maxSize}>
           {children}
         </div>
       </div>
     );
-  },
-});
+  }
+}
 
 export default GradientBackground;
