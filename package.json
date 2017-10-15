@@ -1,7 +1,7 @@
 {
   "name": "react-scifi",
   "version": "0.1.0-alpha",
-  "description": "Sci-fi UI-kit experiment with React.js",
+  "description": "Sci-fi UI-kit for React",
   "main": "./lib/react-scifi.js",
   "author": {
     "name": "Klaus Nygård",

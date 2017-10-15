@@ -1,16 +1,22 @@
 <img src="react-scifi-logo.jpg" alt="React-Scifi" />
 
-# Sci-fi UI-kit with React.js
+# react-scifi
+
+[![npm version](https://badge.fury.io/js/react-scifi.svg)](https://badge.fury.io/js/react-scifi)
+[![Download Count](http://img.shields.io/npm/dm/react-scifi.svg?style=flat-square)](https://npmjs.org/package/react-scifi)
+
+> Sci-fi UI-kit for React
 
 See [demo](https://nygardk.github.io/react-scifi).
 
-NOTE: This is a purely experimental project. Not ready for production use.
+_NOTE: This is an experimental project and is not recommended for critical production work._
 
 ## Install
 
-* run `yarn`
+* `npm install --save react-scifi`
+* include `node_modules/react-scifi/lib/styles.css`
 
-## UI-kit
+## React-scifi UI-kit components
 
 ### Fade
 
