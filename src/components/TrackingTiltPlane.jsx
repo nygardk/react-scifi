@@ -43,7 +43,7 @@ class TrackingTiltPlane extends PureComponent {
   }
 
   onMouseMove = (event) => {
-    const maxTiltDeg = this.props.maxTiltDeg;
+    const { maxTiltDeg } = this.props;
 
     this.setState({
       tiltX: -calculateTilt(maxTiltDeg, event.pageY, window.innerHeight)
