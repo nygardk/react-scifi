@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   NODE_ENV: process.env,
@@ -14,12 +15,17 @@ module.exports = {
     index: ['./src/react-scifi.js']
   },
   output: {
-    publicPath: 'build/',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'lib'),
     filename: 'react-scifi.js',
     sourceMapFilename: 'react-scifi.map',
     library: 'ReactScifi',
     libraryTarget: 'umd'
+  },
+  externals: {
+    'react': 'react',
+    'react-dom': 'react-dom',
+    'react-motion': 'react-motion',
+    'prop-types': 'prop-types',
   },
   resolve: {
     modules: [
@@ -44,29 +50,25 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ],
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader',
+        }),
         include: /node_modules/,
       },
       {
         test: /\.styl$/,
-        loader: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'stylus-loader' },
-        ],
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader' },
+            { loader: 'stylus-loader' },
+          ],
+        }),
       },
     ],
   },
-  plugins: [],
-  externals: {
-    'react': {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react'
-    }
-  },
+  plugins: [
+    new ExtractTextPlugin('styles.css'),
+  ],
 };
